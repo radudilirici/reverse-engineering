@@ -1,6 +1,5 @@
 # Ransomware Analysis
 
-<div style="font-size:18px;">
 Link to the problem:
 
 [https://cs.unibuc.ro/~crusu/re/Reverse%20Engineering%20(RE)%20-%20Project%200x01.pdf](https://cs.unibuc.ro/~crusu/re/Reverse%20Engineering%20(RE)%20-%20Project%200x01.pdf) 
@@ -218,5 +217,3 @@ The second program is responsible for decrypting the file. I hardcoded the name 
 Because I did not find a simple solution to reversing the file on the go inside the C++ program, I created another script for doing exactly this.
 
 Running these three steps seemed to work on some files, but not on the one given in the assignment. I found the name of the original file, which is target_file.encrypt_me_baby_one_more_time and the file seemed to be a PNG image. But the resulting file was corrupted. I checked and even the header had one wrong byte. I tried to fix it by changing that particular byte, but it did not work. There must be more mistakes inside the file.
-
-</div>
