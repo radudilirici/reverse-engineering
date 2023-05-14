@@ -25,7 +25,8 @@ title: {{ site.name }}
 
 
   <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In this
-      process I used </span><span class="c1">IDA Pro 7.0</span><span>&nbsp;on Windows 11 and </span><span class="c1">GNU
+      process, I used </span><span class="c1">IDA Pro 7.0</span><span>&nbsp;on Windows 11 and </span><span
+      class="c1">GNU
       gdb 13.1</span><span>&nbsp;on Kali Linux.</span></p>
 
   <h2><span>Task 1:</span></h2>
@@ -58,7 +59,7 @@ title: {{ site.name }}
 
   <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Entering </span><span class="c1">sub_401BA5
     </span><span>we see many variables
-      that are initialized. From the looks of it we can assume that this is actually a string. After transforming
+      that are initialized. From the looks of it, we can assume that this is actually a string. After transforming
       it to an array of characters it looks a little better, but the string itself doesn&rsquo;t have any
       meaning.</span></p>
   <p><span
@@ -68,7 +69,7 @@ title: {{ site.name }}
         title=""></span></p>
   <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;One interesting function here is </span><span
       class="c1">sub_40152C </span><span>because the
-      rest of the method depends on its return value. At this point I also started using </span><span class="c1">gdb
+      rest of the method depends on its return value. At this point, I also started using </span><span class="c1">gdb
     </span><span>in a Linux environment and observed that this function always returned
     </span><span class="c1">0</span><span>&nbsp;and the program did nothing, or at least nothing
       noticeable.</span></p>
@@ -90,14 +91,14 @@ title: {{ site.name }}
         alt="" src="images/image23.png"
         style="width: 550.50px; height: 539.95px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
         title=""></span></p>
-  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;After some testing I confirmed
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;After some testing, I confirmed
       that
-      this is actually the string that is checked to
+      this is the string that is checked to
       be a suffix for the file to be encrypted. I placed several such files that satisfy this condition on the
-      machine and noted that only the ones placed in the program&rsquo;s folder or in a nested folder were being
+      machine and noted that only the ones placed in the program&rsquo;s folder or a nested folder were being
       encrypted.</span></p>
 
-  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Analyzing the malware further I
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Further analyzing the malware I
       reached these conclusions:</span></p>
   <ul>
     <li class="li-bullet-0"><span>The function called by </span><span class="c1">main </span><span>(</span><span
@@ -105,7 +106,7 @@ title: {{ site.name }}
         directory it navigates it recursively. We&rsquo;ll call this function </span><span
         class="c1">iterate_files</span><span>.</span></li>
     <li class="li-bullet-0"><span>The sub_401BA5 function is responsible for checking if the found file satisfies
-        the pattern required for encryption. It firstly initializes a string with strange characters. Because
+        the pattern required for encryption. It first initializes a string with strange characters. Because
         this string has the same length as the suffix (</span><span
         class="c1">&ldquo;encrypt_me_baby_one_more_time&rdquo;</span><span>) and because there is a method
         (</span><span class="c1">sub_4014CC</span><span>) called with it as its parameter, I assumed that
@@ -171,7 +172,7 @@ title: {{ site.name }}
       someone else, would not be a viable solution, as we&rsquo;d have to do this lots and lots of times. To
       counter this, I applied a patch to the binary and skipped the check altogether.</span></p>
   <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The original program was going
-      through a loop 1000 times, but only checked for an
+      through a loop 1000 times but only checked for an
       external debugger only the first time. This was probably done to make it harder to bypass the mechanism
       dynamically.</span></p>
   <p><span
@@ -212,8 +213,8 @@ title: {{ site.name }}
         title=""></span></p>
 
   <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The encrypt_file method opens two files. One in
-      read mode and one in write mode. </span><span class="c1">IDA </span><span>used just one 128 bit variable for
-      both file names. These should be two separated strings, but </span><span class="c1">IDA </span><span>combined them
+      read mode and one in write mode. </span><span class="c1">IDA </span><span>used just one 128-bit variable for
+      both file names. These should be two separate strings, but </span><span class="c1">IDA </span><span>combined them
       because they were placed successively.</span></p>
   <p><span
       style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 250.00px; height: 37.00px;"><img
@@ -226,7 +227,7 @@ title: {{ site.name }}
         style="width: 601.70px; height: 94.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
         title=""></span></p>
 
-  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Although, it uses an array instead of
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Although it uses an array instead of
       two variables, this would be a better interpretation of the code:</span></p>
   <p><span
       style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 343.00px; height: 29.00px;"><img
@@ -272,17 +273,17 @@ title: {{ site.name }}
         class="c1">&lt;filename&gt;_temp</span><span>&nbsp;name).</span></li>
     <li class="li-bullet-0"><span>A function named </span><span class="c1">sub_40169A </span><span>is
         called.</span></li>
-    <li class="li-bullet-0"><span>The two files are closed. At this point the temporary file already has all the
+    <li class="li-bullet-0"><span>The two files are closed. At this point, the temporary file already has all the
         content inside it. Again, I observed this by placid breakpoints inside the debugger and checking the
-        status of the files. From this we can deduce that </span><span class="c1">sub_40169A </span><span>handles the
+        status of the files. From this, we can deduce that </span><span class="c1">sub_40169A </span><span>handles the
         encryption of the file.</span></li>
     <li class="li-bullet-0"><span>The </span><span class="c1">sub_4015F7 </span><span>method is
         called.</span></li>
     <li class="li-bullet-0"><span>The method </span><span class="c1">word_401842 </span><span>is called. When
-        opening this function inside </span><span class="c1">IDA</span><span>, we can&rsquo;t actually read its
+        opening this function inside </span><span class="c1">IDA</span><span>, we can&rsquo;t read its
         contents. Instead, we can only see some random data. But, by analyzing it dynamically we can observe
         that after the call, the temporary file no longer exists and instead a new file with a cryptic name
-        appears. For now I renamed it to </span><span class="c1">secret_function</span><span>.<br></span><span
+        appears. For now, I renamed it to </span><span class="c1">secret_function</span><span>.<br></span><span
         style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 346.67px;"><img
           alt="" src="images/image9.png"
           style="width: 601.70px; height: 346.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
@@ -297,7 +298,7 @@ title: {{ site.name }}
     </span><span>function seems to be the target of our current task so we&rsquo;ll take a look at it. We&rsquo;ll
       also rename it to </span><span class="c1">encrypt_to_temp_file</span><span>.</span></p>
   <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Setting a breakpoint in </span><span
-      class="c1">gdb</span><span>&nbsp;just before calling it, we actually get a hint for the passed
+      class="c1">gdb</span><span>&nbsp;just before calling it, we get a hint for the passed
       parameters.</span></p>
   <p><span
       style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 222.67px;"><img
@@ -308,7 +309,8 @@ title: {{ site.name }}
       how these parameters are used I concluded that they are, in order:</span></p>
   <ul class="start">
     <li class="li-bullet-0"><span>A pointer to the original file.</span></li>
-    <li class="li-bullet-0"><span>The size of the original file. In this case </span><span class="c1">0x2a</span><span>,
+    <li class="li-bullet-0"><span>The size of the original file. In this case, </span><span
+        class="c1">0x2a</span><span>,
         which is </span><span class="c1">42</span><span>&nbsp;in
         decimal.</span></li>
     <li class="li-bullet-0"><span>The name of the original file.</span></li>
@@ -316,7 +318,7 @@ title: {{ site.name }}
   </ul>
 
   <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;There are three for loops in this
-      method, each writing some text inside the temp file. I wasn&rsquo;t actually able to observe these writing
+      method, each writing some text inside the temp file. I wasn&rsquo;t able to observe these writing
       operations in real time because the buffer was not flushed, but these are my guesses:</span></p>
   <ol class="start" start="1">
     <li class="li-bullet-0"><span>The position of the input stream is placed one byte before the end of the file.
@@ -332,17 +334,17 @@ title: {{ site.name }}
           alt="" src="images/image16.png"
           style="width: 601.70px; height: 142.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
           title=""></span></li>
-    <li class="li-bullet-0"><span>The string </span><span class="c1">&ldquo;fmi_re_couse&rdquo;</span><span>&nbsp;is
+    <li class="li-bullet-0"><span>The string </span><span class="c1">&ldquo;fmi_re_course&rdquo;</span><span>&nbsp;is
         written to the temporary
         file.<br></span><span
         style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 125.33px;"><img
           alt="" src="images/image21.png"
           style="width: 601.70px; height: 125.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
           title=""></span><span><br>Using this information I could confirm that the first part of the
-        encrypted file is indeed a byte to byte correspondence to the original one. I ran the malware on files
+        encrypted file is indeed a byte-to-byte correspondence to the original one. I ran the malware on files
         of different sizes and noticed that the number of characters before </span><span
-        class="c1">&ldquo;fmi_re_couse&rdquo;</span><span>&nbsp;was the same as the number of
-        characters of the original file.</span></li>
+        class="c1">&ldquo;fmi_re_course&rdquo;</span><span>&nbsp;was the same as the number of
+        characters in the original file.</span></li>
     <li class="li-bullet-0"><span>The function goes through the name of the original file. It adds random values
         to each of the characters and writes the new values to the temporary file, just like in the first
         loop.<br></span><span
@@ -360,7 +362,7 @@ title: {{ site.name }}
       The
       first one represents the contents of the
       original file, but each byte has a random value added to it. The second one is the </span><span
-      class="c1">&ldquo;fmi_re_couse&rdquo; </span><span>string. The last part represents the name of
+      class="c1">&ldquo;fmi_re_course&rdquo; </span><span>string. The last part represents the name of
       the original file, but each byte has a random value added to it, just like in the first part.</span></p>
   <hr style="page-break-before:always;display:none;">
 
@@ -383,7 +385,7 @@ title: {{ site.name }}
   <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This method sets the access permissions to
     </span><span class="c1">READ + WRITE + EXECUTE</span><span>&nbsp;(</span><span class="c1">7</span><span>&nbsp;as
       the numerical value) to a memory region. It then traverses the memory region of </span><span
-      class="c1">secret_function </span><span>and applies a </span><span class="c1">XOR </span><span>operation to
+      class="c1">secret_function </span><span>and applies an </span><span class="c1">XOR </span><span>operation to
       it. The memory is read </span><span class="c1">2</span><span>&nbsp;bytes at a time and each chunk is
     </span><span class="c1">XOR</span><span>ed with </span><span class="c1">0x42 </span><span>(</span><span
       class="c1">66</span><span>&nbsp;in decimal). We can see that it only affects this function because the
@@ -392,11 +394,11 @@ title: {{ site.name }}
   <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;From this, we can deduce that </span><span
       class="c1">secret_function</span><span>&nbsp;is initially encrypted and this function decrypts it. It then
       encrypts it back after using the secret function. We&rsquo;ll call this function </span><span
-      class="c1">un_hide_secret_function</span><span>.We want to apply this decryption on the original
+      class="c1">un_hide_secret_function</span><span>. We want to apply this decryption on the original
       binary, so we can statically analyze the method.</span></p>
   <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To achieve this, I ran the malware in
       debug mode and set a breakpoint just before the secret function was called. With the method decrypted in
-      memory, I dumped its contents to a file. I then wrote a script that replaces the encrypted memory zone with
+      memory, I dumped its contents into a file. I then wrote a script that replaces the encrypted memory zone with
       the bytes I previously dumped, i.e. the decrypted function.</span></p>
   <p><span
       style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 596.56px; height: 399.73px;"><img
@@ -404,7 +406,7 @@ title: {{ site.name }}
         style="width: 596.56px; height: 399.73px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
         title=""></span></p>
   <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I executed the script inside </span><span class="c1">IDA
-    </span><span>and specified that it&rsquo;s a function. It then recognized it as a
+    </span><span>and specified that it was a function. It then recognized it as a
       method.</span></p>
   <p><span
       style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 477.93px; height: 270.78px;"><img
@@ -432,7 +434,7 @@ title: {{ site.name }}
       this function, so I simulated it by writing a
       simple C program (</span><span class="c1">renaming.c</span><span>). The </span><span class="c1">new_name
     </span><span>string is the </span><span class="c1">generated_number</span><span>&nbsp;interpreted as
-      a hexadecimal, written backwards one byte at a time (two hex digits). </span></p>
+      hexadecimal, written backwards one byte at a time (two hex digits). </span></p>
   <p><span
       style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 411.50px; height: 135.43px;"><img
         alt="" src="images/image13.png"
@@ -440,7 +442,7 @@ title: {{ site.name }}
         title=""></span></p>
 
   <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This process is reversible. From the name of the
-      file we can get the </span><span class="c1">generated_number</span><span>. And from this we can get the
+      file, we can get the </span><span class="c1">generated_number</span><span>. And from this, we can get the
     </span><span class="c1">seed</span><span>&nbsp;by computing the fourth root of </span><span
       class="c1">generated_number. </span><span>Note: </span><span class="c1">seed </span><span>is
       unsigned, thus always positive.</span></p>
@@ -462,15 +464,15 @@ title: {{ site.name }}
     <li class="li-bullet-0"><span>Go through the first portion of the file (until the </span><span
         class="c1">&ldquo;fmi_re_course&rdquo;</span><span>&nbsp;string) and apply the reverse of the encryption
         procedure. This means reading the bytes, subtracting a random value from them (we should be getting the
-        same random values as the ones in the encryption process, since the </span><span class="c1">seed
-      </span><span>is the same) and writing to them backwards. We have to read them in the right order, so we use
+        same random values as the ones in the encryption process since the </span><span class="c1">seed
+      </span><span>is the same), and writing to them backwards. We have to read them in the right order, so we use
         the same random values as in the encryption.<br></span><span>Note</span><span>: According to
         some info I found online, we should also write this program in C, as the </span><span class="c1">rand
       </span><span>function might return different values when using other programming languages, even when using
-        the same seed. Furthermore, even the compiler has to be the same in order to guarantee that the
+        the same seed. Furthermore, even the compiler has to be the same to guarantee that the
       </span><span class="c1">rand </span><span>will return the same values.</span></li>
     <li class="li-bullet-0"><span>Skip the </span><span class="c1">&ldquo;fmi_re_course&rdquo; </span><span>string and
-        subtract the remaining pseudo random values from the rest of the file to restore
+        subtract the remaining pseudo-random values from the rest of the file to restore
         the original file name.</span></li>
   </ol>
   <h2><span>Task 4:</span></h2>
@@ -499,7 +501,7 @@ title: {{ site.name }}
   <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Running these three steps seemed to work on
       some files, but not on the one given in the
       assignment. I found the name of the original file, which is </span><span
-      class="c1">target_file.encrypt_me_baby_one_more_time</span><span>&nbsp;and the file seemed to be a PNG
+      class="c1">target_file.encrypt_me_baby_one_more_time</span><span>&nbsp;,and the file seemed to be a PNG
       image. But the resulting file was corrupted. I checked and even the header had one wrong byte. I tried to
       fix it by changing that particular byte, but it did not work. There must be more mistakes inside the
       file.</span></p>
