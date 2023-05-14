@@ -4,14 +4,25 @@ title: {{ site.name }}
 ---
 
 <body class="doc-content">
-  <div>
 
+  <div>
+    <h1>Summary</h1>
+
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A pseudo-malicious ransomware is provided. Analyze it using any
+      tools and methods you have learned until this point.</p>
+    <ul>
+      <li>The binary searches for files with a certain pattern and only
+        encrypts those that match. Find out what the pattern is.</li>
+      <li>Describe how the encrypted files are internally structured (what
+        bytes are written in the encrypted files and how the encryption is done).</li>
+      <li>Figure out how the file renaming process works and describe how
+        decryption could theoretically be done.</li>
+      <li>Create a program/script that decrypts any given encrypted file
+        including the target file in the archive.</li>
+    </ul>
   </div>
 
-  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The source files can be found at my <a
-      href="{{ site.github_repo }}">GitHub
-      project</a>.
-  </p>
+  <hr>
 
   <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Link to the problem:</span>
     <a
@@ -23,18 +34,23 @@ title: {{ site.name }}
       href="https://www.google.com/url?q=https://pwnthybytes.ro/unibuc_re/asg1-files.zip&amp;sa=D&amp;source=editors&amp;ust=1684004956077366&amp;usg=AOvVaw0yP-OuS-OaDvpqDfQDwmvo">https://pwnthybytes.ro/unibuc_re/asg1-files.zip</a></span><span>&nbsp;
   </p>
 
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The source files can be found at my <a
+      href="{{ site.github_repo }}">GitHub
+      project</a>.
+  </p>
 
   <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In this
       process, I used </span><span class="c1">IDA Pro 7.0</span><span>&nbsp;on Windows 11 and </span><span
       class="c1">GNU
       gdb 13.1</span><span>&nbsp;on Kali Linux.</span></p>
 
+  <hr>
+
   <h2><span>Task 1:</span></h2>
   <ul>
     <li class="li-bullet-0"><span>The binary searches for files with a certain pattern and only
         encrypts those that match. Find out what the pattern is.</span></li>
   </ul>
-
 
   <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Starting with static analysis in </span><span class="c1">IDA
       Pro</span><span>&nbsp;we can
@@ -143,6 +159,8 @@ title: {{ site.name }}
       encrypts only the ones that have the suffix </span><span
       class="c1">&ldquo;encrypt_me_baby_one_more_time&rdquo;</span><span>.</span></p>
   <hr style="page-break-before:always;display:none;">
+
+  <hr>
 
   <h2><span>Task 2:</span></h2>
   <ul class="start">
@@ -366,6 +384,8 @@ title: {{ site.name }}
       the original file, but each byte has a random value added to it, just like in the first part.</span></p>
   <hr style="page-break-before:always;display:none;">
 
+  <hr>
+
   <h2><span>Task 3:</span></h2>
   <ul class="start">
     <li class="li-bullet-0"><span>Figure out how the file renaming process works and describe how
@@ -475,7 +495,10 @@ title: {{ site.name }}
         subtract the remaining pseudo-random values from the rest of the file to restore
         the original file name.</span></li>
   </ol>
+
+  <hr>
   <h2><span>Task 4:</span></h2>
+
   <ul class="start">
     <li class="li-bullet-0"><span>Create a program/script that decrypts any given encrypted file
         including the target file in the archive.</span></li>
@@ -505,9 +528,8 @@ title: {{ site.name }}
       image. But the resulting file was corrupted. I checked and even the header had one wrong byte. I tried to
       fix it by changing that particular byte, but it did not work. There must be more mistakes inside the
       file.</span></p>
-  <div>
 
-  </div>
+  <hr>
 
   <div id="github">
     <h2>GitHub</h2>
