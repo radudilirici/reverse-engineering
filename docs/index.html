@@ -5,7 +5,7 @@ title: {{ site.name }}
 
 <body class="c15 doc-content">
   <div>
-    <p class="c2 c3 c9"><span class="c4"></span></p>
+
   </div>
 
   <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The source files can be found at my <a
@@ -13,253 +13,251 @@ title: {{ site.name }}
       project</a>.
   </p>
 
-  <p class="c2 c3"><span class="c4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Link to the problem:</span>
-    <a class="c8"
-      href="https://www.google.com/url?q=https://cs.unibuc.ro/~crusu/re/Reverse%2520Engineering%2520(RE)%2520-%2520Project%25200x01.pdf&amp;sa=D&amp;source=editors&amp;ust=1684004956076887&amp;usg=AOvVaw2q9dxEb0UlsrMFsUQqBa1n">https://cs.unibuc.ro/~crusu/re/Reverse%20Engineering%20(RE)%20-%20Project%200x01.pdf</a></span><span
-      class="c4">&nbsp;
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Link to the problem:</span>
+    <a
+      href="https://www.google.com/url?q=https://cs.unibuc.ro/~crusu/re/Reverse%2520Engineering%2520(RE)%2520-%2520Project%25200x01.pdf&amp;sa=D&amp;source=editors&amp;ust=1684004956076887&amp;usg=AOvVaw2q9dxEb0UlsrMFsUQqBa1n">https://cs.unibuc.ro/~crusu/re/Reverse%20Engineering%20(RE)%20-%20Project%200x01.pdf</a></span><span>&nbsp;
   </p>
 
-  <p class="c2 c3"><span class="c4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Link to the binaries:</span>
-    <a class="c8"
-      href="https://www.google.com/url?q=https://pwnthybytes.ro/unibuc_re/asg1-files.zip&amp;sa=D&amp;source=editors&amp;ust=1684004956077366&amp;usg=AOvVaw0yP-OuS-OaDvpqDfQDwmvo">https://pwnthybytes.ro/unibuc_re/asg1-files.zip</a></span><span
-      class="c4">&nbsp;
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Link to the binaries:</span>
+    <a
+      href="https://www.google.com/url?q=https://pwnthybytes.ro/unibuc_re/asg1-files.zip&amp;sa=D&amp;source=editors&amp;ust=1684004956077366&amp;usg=AOvVaw0yP-OuS-OaDvpqDfQDwmvo">https://pwnthybytes.ro/unibuc_re/asg1-files.zip</a></span><span>&nbsp;
   </p>
 
-  <p class="c2 c3 c9"><span class="c4"></span></p>
-  <p class="c2 c3"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In this
+
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In this
       process I used </span><span class="c1">IDA Pro 7.0</span><span>&nbsp;on Windows 11 and </span><span class="c1">GNU
-      gdb 13.1</span><span class="c4">&nbsp;on Kali Linux.</span></p>
+      gdb 13.1</span><span>&nbsp;on Kali Linux.</span></p>
 
-  <h2 class="c5" id="h.eq6jgr6u30x4"><span class="c7">Task 1:</span></h2>
-  <ul class="c6 lst-kix_9lozy2ws9yb6-0 start">
-    <li class="c0 li-bullet-0"><span class="c4">The binary searches for files with a certain pattern and only
+  <h2 id="h.eq6jgr6u30x4"><span>Task 1:</span></h2>
+  <ul class="lst-kix_9lozy2ws9yb6-0 start">
+    <li class="li-bullet-0"><span>The binary searches for files with a certain pattern and only
         encrypts those that match. Find out what the pattern is.</span></li>
   </ul>
-  <p class="c2 c3 c9"><span class="c4"></span></p>
-  <p class="c2 c3 c9"><span class="c4"></span></p>
-  <p class="c2 c3"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Starting with static analysis in </span><span
-      class="c1">IDA Pro</span><span>&nbsp;we can
+
+
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Starting with static analysis in </span><span class="c1">IDA
+      Pro</span><span>&nbsp;we can
       observe that the </span><span class="c1">main()</span><span>&nbsp;function only calls one other function
       with the argument </span><span class="c1">&ldquo;.&rdquo;</span><span>. Therefore, we investigate
-    </span><span class="c1">sub_401C7F</span><span class="c4">.</span></p>
-  <p class="c2 c3"><span
+    </span><span class="c1">sub_401F</span><span>.</span></p>
+  <p><span
       style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 109.33px;"><img
         alt="" src="images/image19.png"
         style="width: 601.70px; height: 109.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
         title=""></span></p>
-  <p class="c2 c3 c9"><span class="c4"></span></p>
-  <p class="c2 c3"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In </span><span class="c1">sub_401C7F
+
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In </span><span class="c1">sub_401F
     </span><span>we can observe that there happens some
       kind of work with directories and files. We can also see that the only other method called here is
-    </span><span class="c1">sub_401BA5</span><span class="c4">.</span></p>
-  <p class="c2 c3"><span
+    </span><span class="c1">sub_401BA5</span><span>.</span></p>
+  <p><span
       style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 110.67px;"><img
         alt="" src="images/image3.png"
         style="width: 601.70px; height: 110.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
         title=""></span></p>
-  <p class="c2 c3 c9"><span class="c4"></span></p>
-  <p class="c2 c3"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Entering </span><span class="c1">sub_401BA5
-    </span><span class="c4">we see many variables
+
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Entering </span><span class="c1">sub_401BA5
+    </span><span>we see many variables
       that are initialized. From the looks of it we can assume that this is actually a string. After transforming
       it to an array of characters it looks a little better, but the string itself doesn&rsquo;t have any
       meaning.</span></p>
-  <p class="c2"><span
+  <p><span
       style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 559.50px; height: 878.18px;"><img
         alt="" src="images/image2.png"
         style="width: 559.50px; height: 878.18px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
         title=""></span></p>
-  <p class="c2 c3"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;One interesting function here is </span><span
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;One interesting function here is </span><span
       class="c1">sub_40152C </span><span>because the
       rest of the method depends on its return value. At this point I also started using </span><span class="c1">gdb
     </span><span>in a Linux environment and observed that this function always returned
-    </span><span class="c1">0</span><span class="c4">&nbsp;and the program did nothing, or at least nothing
+    </span><span class="c1">0</span><span>&nbsp;and the program did nothing, or at least nothing
       noticeable.</span></p>
-  <p class="c2 c3"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The </span><span class="c1">sub_40152C
-    </span><span class="c4">function seems to work with
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The </span><span class="c1">sub_40152C
+    </span><span>function seems to work with
       two strings and it checks that the second one is a suffix to the first one.</span></p>
-  <p class="c2 c3"><span
+  <p><span
       style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 184.00px;"><img
         alt="" src="images/image11.png"
         style="width: 601.70px; height: 184.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
         title=""></span></p>
-  <p class="c2 c3 c9"><span class="c4"></span></p>
-  <p class="c2 c3"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Inspecting this function with the debugger we
+
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Inspecting this function with the debugger we
       notice a string that stands out in the memory
-      of the program. That string is </span><span class="c1">&ldquo;encrypt_me_baby_one_more_time&rdquo;</span><span
-      class="c4">.</span></p>
-  <p class="c2"><span
+      of the program. That string is </span><span
+      class="c1">&ldquo;encrypt_me_baby_one_more_time&rdquo;</span><span>.</span></p>
+  <p><span
       style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 550.50px; height: 539.95px;"><img
         alt="" src="images/image23.png"
         style="width: 550.50px; height: 539.95px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
         title=""></span></p>
-  <p class="c2 c3"><span class="c4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;After some testing I confirmed
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;After some testing I confirmed
       that
       this is actually the string that is checked to
       be a suffix for the file to be encrypted. I placed several such files that satisfy this condition on the
       machine and noted that only the ones placed in the program&rsquo;s folder or in a nested folder were being
       encrypted.</span></p>
-  <p class="c2 c3 c9"><span class="c4"></span></p>
-  <p class="c2 c3"><span class="c4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Analyzing the malware further I
+
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Analyzing the malware further I
       reached these conclusions:</span></p>
-  <ul class="c6 lst-kix_dhiasd97f0mk-0 start">
-    <li class="c0 li-bullet-0"><span>The function called by </span><span class="c1">main </span><span>(</span><span
-        class="c1">sub_401C7F</span><span>) iterates through the files in the current location. If it finds a
+  <ul class="lst-kix_dhiasd97f0mk-0 start">
+    <li class="li-bullet-0"><span>The function called by </span><span class="c1">main </span><span>(</span><span
+        class="c1">sub_401F</span><span>) iterates through the files in the current location. If it finds a
         directory it navigates it recursively. We&rsquo;ll call this function </span><span
-        class="c1">iterate_files</span><span class="c4">.</span></li>
-    <li class="c0 li-bullet-0"><span>The sub_401BA5 function is responsible for checking if the found file satisfies
+        class="c1">iterate_files</span><span>.</span></li>
+    <li class="li-bullet-0"><span>The sub_401BA5 function is responsible for checking if the found file satisfies
         the pattern required for encryption. It firstly initializes a string with strange characters. Because
         this string has the same length as the suffix (</span><span
         class="c1">&ldquo;encrypt_me_baby_one_more_time&rdquo;</span><span>) and because there is a method
         (</span><span class="c1">sub_4014CC</span><span>) called with it as its parameter, I assumed that
         it&rsquo;s an encrypted version of the suffix. This means that </span><span class="c1">sub_4014CC
-      </span><span class="c4">is responsible for decrypting it to the real string.</span></li>
+      </span><span>is responsible for decrypting it to the real string.</span></li>
   </ul>
-  <p class="c2 c9"><span class="c4"></span></p>
-  <p class="c2"><span class="c4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;So, to this point, the flow of the
+
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;So, to this point, the flow of the
       malware is:</span></p>
-  <ol class="c6 lst-kix_v4nt75c4yfbl-0 start" start="1">
-    <li class="c0 li-bullet-0"><span>Search for all the files in the current directory and its subdirectories,
+  <ol class="lst-kix_v4nt75yfbl-0 start" start="1">
+    <li class="li-bullet-0"><span>Search for all the files in the current directory and its subdirectories,
         starting from where the program is called (this is why the </span><span
         class="c1">iterate_files</span><span>&nbsp;function is called with the </span><span
         class="c1">&ldquo;.&rdquo;</span><span>&nbsp;argument). If the program is in folder </span><span
         class="c1">A</span><span>, but we start it via the command line from folder </span><span
         class="c1">B</span><span>, it will start searching for files in the </span><span class="c1">B
-      </span><span class="c4">folder.</span></li>
-    <li class="c0 li-bullet-0"><span class="c4">For each file, compute the secret string and check if it&rsquo;s a
+      </span><span>folder.</span></li>
+    <li class="li-bullet-0"><span>For each file, compute the secret string and check if it&rsquo;s a
         suffix to the file name.</span></li>
-    <li class="c0 li-bullet-0"><span>If it satisfies this condition, enter the </span><span class="c1">sub_4019D2
+    <li class="li-bullet-0"><span>If it satisfies this condition, enter the </span><span class="c1">sub_4019D2
       </span><span>function with the (relative) path and name of the file as arguments. We&rsquo;ll call this
-        function </span><span class="c1">encrypt_file</span><span class="c4">.</span></li>
+        function </span><span class="c1">encrypt_file</span><span>.</span></li>
   </ol>
-  <p class="c2"><span
+  <p><span
       style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 136.00px;"><img
         alt="" src="images/image8.png"
         style="width: 601.70px; height: 136.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
         title=""></span></p>
-  <p class="c2"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All the changes in the code can be seen in the
-      final </span><span class="c1">IDA </span><span class="c4">file.</span></p>
-  <h2 class="c5" id="h.hyv7amrnjyqc"><span class="c7">Task 1 answer:</span></h2>
-  <p class="c2 c3"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The program searches for files in the current
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All the changes in the code can be seen in the
+      final </span><span class="c1">IDA </span><span>file.</span></p>
+  <h2 id="h.hyv7amrnjyqc"><span>Task 1 answer:</span></h2>
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The program searches for files in the current
       directory and all its subdirectories. Then, it
       encrypts only the ones that have the suffix </span><span
-      class="c1">&ldquo;encrypt_me_baby_one_more_time&rdquo;</span><span class="c4">.</span></p>
+      class="c1">&ldquo;encrypt_me_baby_one_more_time&rdquo;</span><span>.</span></p>
   <hr style="page-break-before:always;display:none;">
-  <p class="c2 c9"><span class="c4"></span></p>
-  <h2 class="c5" id="h.fgt5u0swff8u"><span class="c7">Task 2:</span></h2>
-  <ul class="c6 lst-kix_z9fypggpkc3a-0 start">
-    <li class="c0 li-bullet-0"><span class="c4">Describe how the encrypted files are internally structured (what
+
+  <h2 id="h.fgt5u0swff8u"><span>Task 2:</span></h2>
+  <ul class="lst-kix_z9fypggpka-0 start">
+    <li class="li-bullet-0"><span>Describe how the encrypted files are internally structured (what
         bytes are written in the encrypted files and how the encryption is done).</span></li>
   </ul>
-  <p class="c2 c9"><span class="c4"></span></p>
-  <p class="c2"><span class="c4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;While analyzing the program in the
+
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;While analyzing the program in the
       Linux environment, I noticed that it always crashes when running it in debug mode. This means that there is
       some anti-debugging mechanism inside the program.</span></p>
-  <p class="c2"><span
+  <p><span
       style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 97.33px;"><img
         alt="" src="images/image29.png"
         style="width: 601.70px; height: 97.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
         title=""></span></p>
-  <p class="c2 c9"><span class="c4"></span></p>
-  <p class="c2 c3"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Indeed, entering the </span><span
-      class="c1">encrypt_file </span><span>function we notice a
+
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Indeed, entering the </span><span class="c1">encrypt_file
+    </span><span>function we notice a
       method that is called quite a few times (6 to be precise, and it&rsquo;s also called in lots of other
       places). That function is </span><span class="c1">sub_401593</span><span>. If we look inside it we discover
       that it uses </span><span class="c1">ptrace </span><span>to avoid debugging. This is because a program can
       only be traced by one process at a time. We&rsquo;ll call this function </span><span
-      class="c1">exit_if_debugging</span><span class="c4">.</span></p>
-  <p class="c2 c3"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Changing the response of </span><span
-      class="c1">ptrace</span><span class="c4">&nbsp;while
+      class="c1">exit_if_debugging</span><span>.</span></p>
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Changing the response of </span><span
+      class="c1">ptrace</span><span>&nbsp;while
       doing the dynamic analysis, so the program would &ldquo;think&rdquo; that it&rsquo;s not being traced by
       someone else, would not be a viable solution, as we&rsquo;d have to do this lots and lots of times. To
       counter this, I applied a patch to the binary and skipped the check altogether.</span></p>
-  <p class="c2 c3"><span class="c4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The original program was going
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The original program was going
       through a loop 1000 times, but only checked for an
       external debugger only the first time. This was probably done to make it harder to bypass the mechanism
       dynamically.</span></p>
-  <p class="c2"><span
+  <p><span
       style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 228.00px;"><img
         alt="" src="images/image25.png"
         style="width: 601.70px; height: 228.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
         title=""></span></p>
-  <p class="c2 c9"><span class="c4"></span></p>
-  <p class="c2"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Taking a look in the assembly code we see that i
+
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Taking a look in the assembly code we see that i
       is compared to </span><span class="c1">999 </span><span>(</span><span class="c1">0x3E7</span><span>&nbsp;in
       HEX) and if it&rsquo;s less or equal (</span><span class="c1">jle</span><span>) it jumps to the body of the
       loop. I changed this instruction to </span><span class="c1">jg</span><span>, so it does the exact opposite.
       Now, it will execute the inside of the loop only if </span><span class="c1">i &gt; 999</span><span>, which
       will be false from the first iteration (since </span><span class="c1">i</span><span>&nbsp;starts as
-    </span><span class="c1">0</span><span class="c4">). This results in not entering the loop and never checking for
+    </span><span class="c1">0</span><span>). This results in not entering the loop and never checking for
       the debugger.</span></p>
-  <p class="c2 c9"><span class="c4"></span></p>
-  <p class="c2 c3"><span class="c4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Before the patch:</span></p>
-  <p class="c2"><span
+
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Before the patch:</span></p>
+  <p><span
       style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 419.00px; height: 148.00px;"><img
         alt="" src="images/image10.png"
         style="width: 419.00px; height: 148.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
         title=""></span></p>
-  <p class="c2 c9"><span class="c4"></span></p>
-  <p class="c2 c3"><span class="c4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;After the patch:</span></p>
-  <p class="c2"><span
+
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;After the patch:</span></p>
+  <p><span
       style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 421.00px; height: 145.00px;"><img
         alt="" src="images/image24.png"
         style="width: 421.00px; height: 145.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
         title=""></span></p>
-  <p class="c2 c9"><span class="c4"></span></p>
-  <p class="c2 c3"><span class="c4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;And the new corresponding
+
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;And the new corresponding
       pseudocode:</span></p>
-  <p class="c2"><span
+  <p><span
       style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 233.33px;"><img
         alt="" src="images/image18.png"
         style="width: 601.70px; height: 233.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
         title=""></span></p>
-  <p class="c2 c9"><span class="c4"></span></p>
-  <p class="c2"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The encrypt_file method opens two files. One in
+
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The encrypt_file method opens two files. One in
       read mode and one in write mode. </span><span class="c1">IDA </span><span>used just one 128 bit variable for
-      both file names. These should be two separated strings, but </span><span class="c1">IDA </span><span
-      class="c4">combined them because they were placed successively.</span></p>
-  <p class="c2"><span
+      both file names. These should be two separated strings, but </span><span class="c1">IDA </span><span>combined them
+      because they were placed successively.</span></p>
+  <p><span
       style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 250.00px; height: 37.00px;"><img
         alt="" src="images/image7.png"
         style="width: 250.00px; height: 37.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
         title=""></span></p>
-  <p class="c2"><span
+  <p><span
       style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 94.67px;"><img
         alt="" src="images/image1.png"
         style="width: 601.70px; height: 94.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
         title=""></span></p>
-  <p class="c2 c9"><span class="c4"></span></p>
-  <p class="c2"><span class="c4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Although, it uses an array instead of
+
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Although, it uses an array instead of
       two variables, this would be a better interpretation of the code:</span></p>
-  <p class="c2"><span
+  <p><span
       style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 343.00px; height: 29.00px;"><img
         alt="" src="images/image28.png"
         style="width: 343.00px; height: 29.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
         title=""></span></p>
-  <p class="c2"><span
+  <p><span
       style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 70.67px;"><img
         alt="" src="images/image5.png"
         style="width: 601.70px; height: 70.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
         title=""></span></p>
-  <p class="c2 c9"><span class="c4"></span></p>
-  <p class="c2"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Using dynamic analysis and placing several
+
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Using dynamic analysis and placing several
       breakpoints inside this function we notice that the encryption takes place in two steps. First, a new file
       called </span><span class="c1">&lt;filename&gt;_temp</span><span>&nbsp;is created, where </span><span
-      class="c1">&lt;filename&gt;</span><span class="c4">&nbsp;is the name of the original file. Then, the malware
+      class="c1">&lt;filename&gt;</span><span>&nbsp;is the name of the original file. Then, the malware
       writes to this new file the encrypted contents of the original file. Lastly, the temporary file is renamed.
       This could not have been observed only by running the program, as the whole process is usually
       instantaneous.</span></p>
-  <p class="c2 c9"><span class="c4"></span></p>
-  <p class="c2"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Based on our current knowledge, this is a
-      summary of the </span><span class="c1">encrypt_file</span><span class="c4">&nbsp;function:</span></p>
-  <ol class="c6 lst-kix_muojexkgnje2-0 start" start="1">
-    <li class="c0 li-bullet-0"><span>A random seed is generated based on the current time and a constant
+
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Based on our current knowledge, this is a
+      summary of the </span><span class="c1">encrypt_file</span><span>&nbsp;function:</span></p>
+  <ol class="lst-kix_muojexkgnje2-0 start" start="1">
+    <li class="li-bullet-0"><span>A random seed is generated based on the current time and a constant
         (</span><span class="c1">0xDEADBEEF</span><span>). We don&rsquo;t know what it&rsquo;s used for at this
         point.<br></span><span
         style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 549.50px; height: 49.77px;"><img
           alt="" src="images/image26.png"
           style="width: 549.50px; height: 49.77px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
           title=""></span></li>
-    <li class="c0 li-bullet-0"><span>The function </span><span class="c1">xstat </span><span>is called for the
+    <li class="li-bullet-0"><span>The function </span><span class="c1">xstat </span><span>is called for the
         original file. This provides information about the file. Only the file size is extracted from this call.
         Actually, another function named </span><span class="c1">sub_401E00 </span><span>is called, which is a
         wrapper for </span><span class="c1">xstat</span><span>. I named it </span><span
@@ -268,19 +266,19 @@ title: {{ site.name }}
           alt="" src="images/image27.png"
           style="width: 552.50px; height: 47.72px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
           title=""></span></li>
-    <li class="c0 li-bullet-0"><span>The original file is opened in read mode (</span><span
+    <li class="li-bullet-0"><span>The original file is opened in read mode (</span><span
         class="c1">full_file_names[1]</span><span>&nbsp;in the previous picture) and the temporary file is
         opened in write mode (</span><span class="c1">full_file_names[0]</span><span>, having the </span><span
-        class="c1">&lt;filename&gt;_temp</span><span class="c4">&nbsp;name).</span></li>
-    <li class="c0 li-bullet-0"><span>A function named </span><span class="c1">sub_40169A </span><span class="c4">is
+        class="c1">&lt;filename&gt;_temp</span><span>&nbsp;name).</span></li>
+    <li class="li-bullet-0"><span>A function named </span><span class="c1">sub_40169A </span><span>is
         called.</span></li>
-    <li class="c0 li-bullet-0"><span>The two files are closed. At this point the temporary file already has all the
+    <li class="li-bullet-0"><span>The two files are closed. At this point the temporary file already has all the
         content inside it. Again, I observed this by placid breakpoints inside the debugger and checking the
-        status of the files. From this we can deduce that </span><span class="c1">sub_40169A </span><span
-        class="c4">handles the encryption of the file.</span></li>
-    <li class="c0 li-bullet-0"><span>The </span><span class="c1">sub_4015F7 </span><span class="c4">method is
+        status of the files. From this we can deduce that </span><span class="c1">sub_40169A </span><span>handles the
+        encryption of the file.</span></li>
+    <li class="li-bullet-0"><span>The </span><span class="c1">sub_4015F7 </span><span>method is
         called.</span></li>
-    <li class="c0 li-bullet-0"><span>The method </span><span class="c1">word_401842 </span><span>is called. When
+    <li class="li-bullet-0"><span>The method </span><span class="c1">word_401842 </span><span>is called. When
         opening this function inside </span><span class="c1">IDA</span><span>, we can&rsquo;t actually read its
         contents. Instead, we can only see some random data. But, by analyzing it dynamically we can observe
         that after the call, the temporary file no longer exists and instead a new file with a cryptic name
@@ -289,52 +287,52 @@ title: {{ site.name }}
           alt="" src="images/image9.png"
           style="width: 601.70px; height: 346.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
           title=""></span></li>
-    <li class="c0 li-bullet-0"><span>The </span><span class="c1">sub_4015F7 </span><span class="c4">function is
+    <li class="li-bullet-0"><span>The </span><span class="c1">sub_4015F7 </span><span>function is
         called again.</span></li>
-    <li class="c0 li-bullet-0"><span class="c4">The original file is deleted. This is an observation of dynamic
+    <li class="li-bullet-0"><span>The original file is deleted. This is an observation of dynamic
         analysis.</span></li>
   </ol>
-  <p class="c2 c9"><span class="c4"></span></p>
-  <p class="c2"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The </span><span class="c1">sub_40169A
+
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The </span><span class="c1">sub_40169A
     </span><span>function seems to be the target of our current task so we&rsquo;ll take a look at it. We&rsquo;ll
-      also rename it to </span><span class="c1">encrypt_to_temp_file</span><span class="c4">.</span></p>
-  <p class="c2"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Setting a breakpoint in </span><span
-      class="c1">gdb</span><span class="c4">&nbsp;just before calling it, we actually get a hint for the passed
+      also rename it to </span><span class="c1">encrypt_to_temp_file</span><span>.</span></p>
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Setting a breakpoint in </span><span
+      class="c1">gdb</span><span>&nbsp;just before calling it, we actually get a hint for the passed
       parameters.</span></p>
-  <p class="c2"><span
+  <p><span
       style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 222.67px;"><img
         alt="" src="images/image14.png"
         style="width: 601.70px; height: 222.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
         title=""></span></p>
-  <p class="c2"><span class="c4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;After further analyzing the code and
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;After further analyzing the code and
       how these parameters are used I concluded that they are, in order:</span></p>
-  <ul class="c6 lst-kix_un2addabwywt-0 start">
-    <li class="c0 li-bullet-0"><span class="c4">A pointer to the original file.</span></li>
-    <li class="c0 li-bullet-0"><span>The size of the original file. In this case </span><span
-        class="c1">0x2a</span><span>, which is </span><span class="c1">42</span><span class="c4">&nbsp;in
+  <ul class="lst-kix_un2addabwywt-0 start">
+    <li class="li-bullet-0"><span>A pointer to the original file.</span></li>
+    <li class="li-bullet-0"><span>The size of the original file. In this case </span><span class="c1">0x2a</span><span>,
+        which is </span><span class="c1">42</span><span>&nbsp;in
         decimal.</span></li>
-    <li class="c0 li-bullet-0"><span class="c4">The name of the original file.</span></li>
-    <li class="c0 li-bullet-0"><span class="c4">A pointer to the temporary file.</span></li>
+    <li class="li-bullet-0"><span>The name of the original file.</span></li>
+    <li class="li-bullet-0"><span>A pointer to the temporary file.</span></li>
   </ul>
-  <p class="c2 c9"><span class="c4"></span></p>
-  <p class="c2"><span class="c4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;There are three for loops in this
+
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;There are three for loops in this
       method, each writing some text inside the temp file. I wasn&rsquo;t actually able to observe these writing
       operations in real time because the buffer was not flushed, but these are my guesses:</span></p>
-  <ol class="c6 lst-kix_4l761hur4a6a-0 start" start="1">
-    <li class="c0 li-bullet-0"><span>The position of the input stream is placed one byte before the end of the file.
+  <ol class="lst-kix_4l761hur4a6a-0 start" start="1">
+    <li class="li-bullet-0"><span>The position of the input stream is placed one byte before the end of the file.
         This is done so the next read operation results in getting the last byte.<br></span><span
         style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 352.50px; height: 26.01px;"><img
           alt="" src="images/image15.png"
           style="width: 352.50px; height: 26.01px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
           title=""></span></li>
-    <li class="c0 li-bullet-0"><span>The method goes through the original file byte by byte, backwards. For each
+    <li class="li-bullet-0"><span>The method goes through the original file byte by byte, backwards. For each
         read byte a random value is added to it. Then, this new byte is written to the temporary
         file.<br></span><span
         style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 142.67px;"><img
           alt="" src="images/image16.png"
           style="width: 601.70px; height: 142.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
           title=""></span></li>
-    <li class="c0 li-bullet-0"><span>The string </span><span class="c1">&ldquo;fmi_re_couse&rdquo;</span><span>&nbsp;is
+    <li class="li-bullet-0"><span>The string </span><span class="c1">&ldquo;fmi_re_couse&rdquo;</span><span>&nbsp;is
         written to the temporary
         file.<br></span><span
         style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 125.33px;"><img
@@ -343,9 +341,9 @@ title: {{ site.name }}
           title=""></span><span><br>Using this information I could confirm that the first part of the
         encrypted file is indeed a byte to byte correspondence to the original one. I ran the malware on files
         of different sizes and noticed that the number of characters before </span><span
-        class="c1">&ldquo;fmi_re_couse&rdquo;</span><span class="c4">&nbsp;was the same as the number of
+        class="c1">&ldquo;fmi_re_couse&rdquo;</span><span>&nbsp;was the same as the number of
         characters of the original file.</span></li>
-    <li class="c0 li-bullet-0"><span>The function goes through the name of the original file. It adds random values
+    <li class="li-bullet-0"><span>The function goes through the name of the original file. It adds random values
         to each of the characters and writes the new values to the temporary file, just like in the first
         loop.<br></span><span
         style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 132.00px;"><img
@@ -353,115 +351,115 @@ title: {{ site.name }}
           style="width: 601.70px; height: 132.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
           title=""></span></li>
   </ol>
-  <p class="c2 c9"><span class="c4"></span></p>
-  <p class="c2 c3"><span class="c4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For now, we can&rsquo;t possibly
+
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For now, we can&rsquo;t possibly
       decrypt this new file as all its bytes are
       basically random.</span></p>
-  <h2 class="c5" id="h.czxr9svr5gk0"><span class="c7">Task 2 answer:</span></h2>
-  <p class="c2 c3"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The encrypted file consists of three parts.
+  <h2 id="h.czxr9svr5gk0"><span>Task 2 answer:</span></h2>
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The encrypted file consists of three parts.
       The
       first one represents the contents of the
       original file, but each byte has a random value added to it. The second one is the </span><span
-      class="c1">&ldquo;fmi_re_couse&rdquo; </span><span class="c4">string. The last part represents the name of
+      class="c1">&ldquo;fmi_re_couse&rdquo; </span><span>string. The last part represents the name of
       the original file, but each byte has a random value added to it, just like in the first part.</span></p>
   <hr style="page-break-before:always;display:none;">
-  <p class="c2 c9"><span class="c4"></span></p>
-  <h2 class="c5" id="h.dwuhuurw63ba"><span class="c7">Task 3:</span></h2>
-  <ul class="c6 lst-kix_bt8wrjnf7bx0-0 start">
-    <li class="c0 li-bullet-0"><span class="c4">Figure out how the file renaming process works and describe how
+
+  <h2 id="h.dwuhuurw63ba"><span>Task 3:</span></h2>
+  <ul class="lst-kix_bt8wrjnf7bx0-0 start">
+    <li class="li-bullet-0"><span>Figure out how the file renaming process works and describe how
         decryption could theoretically be done.</span></li>
   </ul>
-  <p class="c2 c9"><span class="c4"></span></p>
-  <p class="c2"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;There are two more functions inside </span><span
+
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;There are two more functions inside </span><span
       class="c1">encrypt_file </span><span>that we did not cover. We can&rsquo;t read the contents of </span><span
-      class="c1">secret_function</span><span>, so we&rsquo;ll analyze </span><span class="c1">sub_4015F7</span><span
-      class="c4">.</span></p>
-  <p class="c2"><span
+      class="c1">secret_function</span><span>, so we&rsquo;ll analyze </span><span
+      class="c1">sub_4015F7</span><span>.</span></p>
+  <p><span
       style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 53.33px;"><img
         alt="" src="images/image17.png"
         style="width: 601.70px; height: 53.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
         title=""></span></p>
-  <p class="c2 c9"><span class="c4"></span></p>
-  <p class="c2"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This method sets the access permissions to
+
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This method sets the access permissions to
     </span><span class="c1">READ + WRITE + EXECUTE</span><span>&nbsp;(</span><span class="c1">7</span><span>&nbsp;as
       the numerical value) to a memory region. It then traverses the memory region of </span><span
       class="c1">secret_function </span><span>and applies a </span><span class="c1">XOR </span><span>operation to
       it. The memory is read </span><span class="c1">2</span><span>&nbsp;bytes at a time and each chunk is
     </span><span class="c1">XOR</span><span>ed with </span><span class="c1">0x42 </span><span>(</span><span
       class="c1">66</span><span>&nbsp;in decimal). We can see that it only affects this function because the
-      iteration stops when reaching </span><span class="c1">encrypt_file</span><span class="c4">, which is the
+      iteration stops when reaching </span><span class="c1">encrypt_file</span><span>, which is the
       next function in the code of the program.</span></p>
-  <p class="c2"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;From this, we can deduce that </span><span
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;From this, we can deduce that </span><span
       class="c1">secret_function</span><span>&nbsp;is initially encrypted and this function decrypts it. It then
       encrypts it back after using the secret function. We&rsquo;ll call this function </span><span
-      class="c1">un_hide_secret_function</span><span class="c4">.We want to apply this decryption on the original
+      class="c1">un_hide_secret_function</span><span>.We want to apply this decryption on the original
       binary, so we can statically analyze the method.</span></p>
-  <p class="c2"><span class="c4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To achieve this, I ran the malware in
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To achieve this, I ran the malware in
       debug mode and set a breakpoint just before the secret function was called. With the method decrypted in
       memory, I dumped its contents to a file. I then wrote a script that replaces the encrypted memory zone with
       the bytes I previously dumped, i.e. the decrypted function.</span></p>
-  <p class="c2"><span
+  <p><span
       style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 596.56px; height: 399.73px;"><img
         alt="" src="images/image6.png"
         style="width: 596.56px; height: 399.73px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
         title=""></span></p>
-  <p class="c2"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I executed the script inside </span><span
-      class="c1">IDA </span><span class="c4">and specified that it&rsquo;s a function. It then recognized it as a
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I executed the script inside </span><span class="c1">IDA
+    </span><span>and specified that it&rsquo;s a function. It then recognized it as a
       method.</span></p>
-  <p class="c2"><span
+  <p><span
       style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 477.93px; height: 270.78px;"><img
         alt="" src="images/image12.png"
         style="width: 477.93px; height: 270.78px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
         title=""></span></p>
-  <p class="c2 c9"><span class="c4"></span></p>
-  <p class="c2"><span class="c4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This is the resulting
+
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This is the resulting
       function:</span></p>
-  <p class="c2"><span
+  <p><span
       style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 535.50px; height: 452.41px;"><img
         alt="" src="images/image22.png"
         style="width: 535.50px; height: 452.41px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
         title=""></span></p>
   <hr style="page-break-before:always;display:none;">
-  <p class="c2 c9"><span class="c4"></span></p>
-  <p class="c2"><span class="c4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;And this is the function after some
+
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;And this is the function after some
       renaming:</span></p>
-  <p class="c2"><span
+  <p><span
       style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 625.92px; height: 364.34px;"><img
         alt="" src="images/image4.png"
         style="width: 625.92px; height: 364.34px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
         title=""></span></p>
-  <p class="c2 c3"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I wasn&rsquo;t entirely sure of the result of
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I wasn&rsquo;t entirely sure of the result of
       this function, so I simulated it by writing a
       simple C program (</span><span class="c1">renaming.c</span><span>). The </span><span class="c1">new_name
-    </span><span>string is the </span><span class="c1">generated_number</span><span class="c4">&nbsp;interpreted as
+    </span><span>string is the </span><span class="c1">generated_number</span><span>&nbsp;interpreted as
       a hexadecimal, written backwards one byte at a time (two hex digits). </span></p>
-  <p class="c2"><span
+  <p><span
       style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 411.50px; height: 135.43px;"><img
         alt="" src="images/image13.png"
         style="width: 411.50px; height: 135.43px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
         title=""></span></p>
-  <p class="c2 c9"><span class="c4"></span></p>
-  <p class="c2"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This process is reversible. From the name of the
+
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This process is reversible. From the name of the
       file we can get the </span><span class="c1">generated_number</span><span>. And from this we can get the
     </span><span class="c1">seed</span><span>&nbsp;by computing the fourth root of </span><span
-      class="c1">generated_number. </span><span>Note: </span><span class="c1">seed </span><span class="c4">is
+      class="c1">generated_number. </span><span>Note: </span><span class="c1">seed </span><span>is
       unsigned, thus always positive.</span></p>
-  <h2 class="c5" id="h.y8yzerwe53q3"><span class="c7">Task 3 answer:</span></h2>
-  <p class="c2 c3"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The name of the encrypted file is computed
+  <h2 id="h.y8yzerwe53q3"><span>Task 3 answer:</span></h2>
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The name of the encrypted file is computed
       from
       the generated </span><span class="c1">seed</span><span>. Then, </span><span class="c1">seed </span><span>to the
-      power of </span><span class="c1">4 </span><span class="c4">is stored in another variable. This new value is
+      power of </span><span class="c1">4 </span><span>is stored in another variable. This new value is
       interpreted in
       hexadecimal and is used for the new name. Lastly, the bytes are reversed.</span></p>
-  <p class="c2 c3 c9"><span class="c4"></span></p>
-  <p class="c2"><span class="c4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To decrypt the file we should:</span>
+
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To decrypt the file we should:</span>
   </p>
-  <ol class="c6 lst-kix_bkzp6payq5-0 start" start="1">
-    <li class="c0 li-bullet-0"><span>Compute the </span><span class="c1">seed </span><span class="c4">using the
+  <ol class="lst-kix_bkzp6payq5-0 start" start="1">
+    <li class="li-bullet-0"><span>Compute the </span><span class="c1">seed </span><span>using the
         described process.</span></li>
-    <li class="c0 li-bullet-0"><span>Use this </span><span class="c1">seed </span><span class="c4">to initialize the
+    <li class="li-bullet-0"><span>Use this </span><span class="c1">seed </span><span>to initialize the
         random number generator.</span></li>
-    <li class="c0 li-bullet-0"><span>Go through the first portion of the file (until the </span><span
+    <li class="li-bullet-0"><span>Go through the first portion of the file (until the </span><span
         class="c1">&ldquo;fmi_re_course&rdquo;</span><span>&nbsp;string) and apply the reverse of the encryption
         procedure. This means reading the bytes, subtracting a random value from them (we should be getting the
         same random values as the ones in the encryption process, since the </span><span class="c1">seed
@@ -470,36 +468,35 @@ title: {{ site.name }}
         some info I found online, we should also write this program in C, as the </span><span class="c1">rand
       </span><span>function might return different values when using other programming languages, even when using
         the same seed. Furthermore, even the compiler has to be the same in order to guarantee that the
-      </span><span class="c1">rand </span><span class="c4">will return the same values.</span></li>
-    <li class="c0 li-bullet-0"><span>Skip the </span><span class="c1">&ldquo;fmi_re_course&rdquo; </span><span
-        class="c4">string and subtract the remaining pseudo random values from the rest of the file to restore
+      </span><span class="c1">rand </span><span>will return the same values.</span></li>
+    <li class="li-bullet-0"><span>Skip the </span><span class="c1">&ldquo;fmi_re_course&rdquo; </span><span>string and
+        subtract the remaining pseudo random values from the rest of the file to restore
         the original file name.</span></li>
   </ol>
-  <h2 class="c5" id="h.rvq91cbu4ts8"><span class="c7">Task 4:</span></h2>
-  <ul class="c6 lst-kix_piwxxyicfa3k-0 start">
-    <li class="c0 li-bullet-0"><span class="c4">Create a program/script that decrypts any given encrypted file
+  <h2 id="h.rvq91cbu4ts8"><span>Task 4:</span></h2>
+  <ul class="lst-kix_piwxxyicfa3k-0 start">
+    <li class="li-bullet-0"><span>Create a program/script that decrypts any given encrypted file
         including the target file in the archive.</span></li>
   </ul>
-  <p class="c2 c9"><span class="c4"></span></p>
-  <p class="c2"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I created several programs to achieve this.
+
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I created several programs to achieve this.
       These are </span><span class="c1">1_get_info.py</span><span>, </span><span
-      class="c1">2_decrypt.cpp</span><span>&nbsp;and </span><span class="c1">3_reverse_file.py</span><span
-      class="c4">.</span></p>
-  <p class="c2 c3"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The first one is a script that computes the
+      class="c1">2_decrypt.cpp</span><span>&nbsp;and </span><span class="c1">3_reverse_file.py</span><span>.</span></p>
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The first one is a script that computes the
     </span><span class="c1">seed </span><span>and
-      finds the position of the </span><span class="c1">&ldquo;fmi_re_course&rdquo;</span><span class="c4">&nbsp;string
+      finds the position of the </span><span class="c1">&ldquo;fmi_re_course&rdquo;</span><span>&nbsp;string
       in the file. The second functionality worked for my test file, but not for the one
       in the assignment. I found this value by manually inspecting the binary file.</span></p>
-  <p class="c2 c3"><span class="c4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The second program is responsible
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The second program is responsible
       for decrypting the file. I hardcoded the name of
       the input file and the information generated by the previous Python script. It also prints the original name
       of the encrypted file. The problem with this program is that it does not reverse the contents of the
       file.</span></p>
-  <p class="c2 c3"><span class="c4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Because I did not find a simple
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Because I did not find a simple
       solution to reversing the file on the go inside
       the C++ program, I created another script for doing exactly this.</span></p>
-  <p class="c2 c9"><span class="c4"></span></p>
-  <p class="c2 c3"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Running these three steps seemed to work on
+
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Running these three steps seemed to work on
       some files, but not on the one given in the
       assignment. I found the name of the original file, which is </span><span
       class="c1">target_file.encrypt_me_baby_one_more_time</span><span>&nbsp;and the file seemed to be a PNG
@@ -507,7 +504,7 @@ title: {{ site.name }}
       fix it by changing that particular byte, but it did not work. There must be more mistakes inside the
       file.</span></p>
   <div>
-    <p class="c2 c3 c9"><span class="c4"></span></p>
+
   </div>
 
   <div id="github">
