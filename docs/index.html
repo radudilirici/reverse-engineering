@@ -3,7 +3,7 @@ layout: default
 title: {{ site.name }}
 ---
 
-<body class="c15 doc-content">
+<body class="doc-content">
   <div>
 
   </div>
@@ -28,8 +28,8 @@ title: {{ site.name }}
       process I used </span><span class="c1">IDA Pro 7.0</span><span>&nbsp;on Windows 11 and </span><span class="c1">GNU
       gdb 13.1</span><span>&nbsp;on Kali Linux.</span></p>
 
-  <h2 id="h.eq6jgr6u30x4"><span>Task 1:</span></h2>
-  <ul class="lst-kix_9lozy2ws9yb6-0 start">
+  <h2><span>Task 1:</span></h2>
+  <ul>
     <li class="li-bullet-0"><span>The binary searches for files with a certain pattern and only
         encrypts those that match. Find out what the pattern is.</span></li>
   </ul>
@@ -99,7 +99,7 @@ title: {{ site.name }}
 
   <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Analyzing the malware further I
       reached these conclusions:</span></p>
-  <ul class="lst-kix_dhiasd97f0mk-0 start">
+  <ul>
     <li class="li-bullet-0"><span>The function called by </span><span class="c1">main </span><span>(</span><span
         class="c1">sub_401F</span><span>) iterates through the files in the current location. If it finds a
         directory it navigates it recursively. We&rsquo;ll call this function </span><span
@@ -115,7 +115,7 @@ title: {{ site.name }}
 
   <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;So, to this point, the flow of the
       malware is:</span></p>
-  <ol class="lst-kix_v4nt75yfbl-0 start" start="1">
+  <ol class="start" start="1">
     <li class="li-bullet-0"><span>Search for all the files in the current directory and its subdirectories,
         starting from where the program is called (this is why the </span><span
         class="c1">iterate_files</span><span>&nbsp;function is called with the </span><span
@@ -136,15 +136,15 @@ title: {{ site.name }}
         title=""></span></p>
   <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All the changes in the code can be seen in the
       final </span><span class="c1">IDA </span><span>file.</span></p>
-  <h2 id="h.hyv7amrnjyqc"><span>Task 1 answer:</span></h2>
+  <h2><span>Task 1 answer:</span></h2>
   <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The program searches for files in the current
       directory and all its subdirectories. Then, it
       encrypts only the ones that have the suffix </span><span
       class="c1">&ldquo;encrypt_me_baby_one_more_time&rdquo;</span><span>.</span></p>
   <hr style="page-break-before:always;display:none;">
 
-  <h2 id="h.fgt5u0swff8u"><span>Task 2:</span></h2>
-  <ul class="lst-kix_z9fypggpka-0 start">
+  <h2><span>Task 2:</span></h2>
+  <ul class="start">
     <li class="li-bullet-0"><span>Describe how the encrypted files are internally structured (what
         bytes are written in the encrypted files and how the encryption is done).</span></li>
   </ul>
@@ -249,7 +249,7 @@ title: {{ site.name }}
 
   <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Based on our current knowledge, this is a
       summary of the </span><span class="c1">encrypt_file</span><span>&nbsp;function:</span></p>
-  <ol class="lst-kix_muojexkgnje2-0 start" start="1">
+  <ol class="start" start="1">
     <li class="li-bullet-0"><span>A random seed is generated based on the current time and a constant
         (</span><span class="c1">0xDEADBEEF</span><span>). We don&rsquo;t know what it&rsquo;s used for at this
         point.<br></span><span
@@ -306,7 +306,7 @@ title: {{ site.name }}
         title=""></span></p>
   <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;After further analyzing the code and
       how these parameters are used I concluded that they are, in order:</span></p>
-  <ul class="lst-kix_un2addabwywt-0 start">
+  <ul class="start">
     <li class="li-bullet-0"><span>A pointer to the original file.</span></li>
     <li class="li-bullet-0"><span>The size of the original file. In this case </span><span class="c1">0x2a</span><span>,
         which is </span><span class="c1">42</span><span>&nbsp;in
@@ -318,7 +318,7 @@ title: {{ site.name }}
   <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;There are three for loops in this
       method, each writing some text inside the temp file. I wasn&rsquo;t actually able to observe these writing
       operations in real time because the buffer was not flushed, but these are my guesses:</span></p>
-  <ol class="lst-kix_4l761hur4a6a-0 start" start="1">
+  <ol class="start" start="1">
     <li class="li-bullet-0"><span>The position of the input stream is placed one byte before the end of the file.
         This is done so the next read operation results in getting the last byte.<br></span><span
         style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 352.50px; height: 26.01px;"><img
@@ -355,7 +355,7 @@ title: {{ site.name }}
   <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For now, we can&rsquo;t possibly
       decrypt this new file as all its bytes are
       basically random.</span></p>
-  <h2 id="h.czxr9svr5gk0"><span>Task 2 answer:</span></h2>
+  <h2><span>Task 2 answer:</span></h2>
   <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The encrypted file consists of three parts.
       The
       first one represents the contents of the
@@ -364,8 +364,8 @@ title: {{ site.name }}
       the original file, but each byte has a random value added to it, just like in the first part.</span></p>
   <hr style="page-break-before:always;display:none;">
 
-  <h2 id="h.dwuhuurw63ba"><span>Task 3:</span></h2>
-  <ul class="lst-kix_bt8wrjnf7bx0-0 start">
+  <h2><span>Task 3:</span></h2>
+  <ul class="start">
     <li class="li-bullet-0"><span>Figure out how the file renaming process works and describe how
         decryption could theoretically be done.</span></li>
   </ul>
@@ -444,7 +444,7 @@ title: {{ site.name }}
     </span><span class="c1">seed</span><span>&nbsp;by computing the fourth root of </span><span
       class="c1">generated_number. </span><span>Note: </span><span class="c1">seed </span><span>is
       unsigned, thus always positive.</span></p>
-  <h2 id="h.y8yzerwe53q3"><span>Task 3 answer:</span></h2>
+  <h2><span>Task 3 answer:</span></h2>
   <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The name of the encrypted file is computed
       from
       the generated </span><span class="c1">seed</span><span>. Then, </span><span class="c1">seed </span><span>to the
@@ -454,7 +454,7 @@ title: {{ site.name }}
 
   <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To decrypt the file we should:</span>
   </p>
-  <ol class="lst-kix_bkzp6payq5-0 start" start="1">
+  <ol class="start" start="1">
     <li class="li-bullet-0"><span>Compute the </span><span class="c1">seed </span><span>using the
         described process.</span></li>
     <li class="li-bullet-0"><span>Use this </span><span class="c1">seed </span><span>to initialize the
@@ -464,7 +464,7 @@ title: {{ site.name }}
         procedure. This means reading the bytes, subtracting a random value from them (we should be getting the
         same random values as the ones in the encryption process, since the </span><span class="c1">seed
       </span><span>is the same) and writing to them backwards. We have to read them in the right order, so we use
-        the same random values as in the encryption.<br></span><span class="c12">Note</span><span>: According to
+        the same random values as in the encryption.<br></span><span>Note</span><span>: According to
         some info I found online, we should also write this program in C, as the </span><span class="c1">rand
       </span><span>function might return different values when using other programming languages, even when using
         the same seed. Furthermore, even the compiler has to be the same in order to guarantee that the
@@ -473,8 +473,8 @@ title: {{ site.name }}
         subtract the remaining pseudo random values from the rest of the file to restore
         the original file name.</span></li>
   </ol>
-  <h2 id="h.rvq91cbu4ts8"><span>Task 4:</span></h2>
-  <ul class="lst-kix_piwxxyicfa3k-0 start">
+  <h2><span>Task 4:</span></h2>
+  <ul class="start">
     <li class="li-bullet-0"><span>Create a program/script that decrypts any given encrypted file
         including the target file in the archive.</span></li>
   </ul>
