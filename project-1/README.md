@@ -1,5 +1,16 @@
 # Ransomware Analysis
 
+## Check out the project presentation at https://radudilirici.github.io/reverse-engineering/.
+
+## Summary
+
+A pseudo-malicious ransomware is provided. Analyze it using any tools and methods you have learned until this point.
+
+* The binary searches for files with a certain pattern and only encrypts those that match. Find out what the pattern is.
+* Describe how the encrypted files are internally structured (what bytes are written in the encrypted files and how the encryption is done).
+* Figure out how the file renaming process works and describe how decryption could theoretically be done.
+* Create a program/script that decrypts any given encrypted file including the target file in the archive.
+
 Link to the problem:
 
 [https://cs.unibuc.ro/~crusu/re/Reverse%20Engineering%20(RE)%20-%20Project%200x01.pdf](https://cs.unibuc.ro/~crusu/re/Reverse%20Engineering%20(RE)%20-%20Project%200x01.pdf) 
