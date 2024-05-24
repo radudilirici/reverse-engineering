@@ -8,8 +8,8 @@ title: {{ site.name }}
   <div>
     <h1>Summary</h1>
 
-    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A pseudo-malicious ransomware is provided. Analyze it using any
-      tools and methods you have learned until this point.</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A pseudo-malicious ransomware is provided.
+      Analyze it using any tools and methods you have learned until this point.</p>
     <ul>
       <li>The binary searches for files with a certain pattern and only
         encrypts those that match. Find out what the pattern is.</li>
@@ -292,7 +292,7 @@ title: {{ site.name }}
     <li class="li-bullet-0"><span>A function named </span><span class="c1">sub_40169A </span><span>is
         called.</span></li>
     <li class="li-bullet-0"><span>The two files are closed. At this point, the temporary file already has all the
-        content inside it. Again, I observed this by placid breakpoints inside the debugger and checking the
+        content inside it. Again, I observed this by placing breakpoints inside the debugger and checking the
         status of the files. From this, we can deduce that </span><span class="c1">sub_40169A </span><span>handles the
         encryption of the file.</span></li>
     <li class="li-bullet-0"><span>The </span><span class="c1">sub_4015F7 </span><span>method is
@@ -346,7 +346,7 @@ title: {{ site.name }}
           style="width: 352.50px; height: 26.01px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
           title=""></span></li>
     <li class="li-bullet-0"><span>The method goes through the original file byte by byte, backwards. For each
-        read byte a random value is added to it. Then, this new byte is written to the temporary
+        byte read a random value is added to it. Then, this new byte is written to the temporary
         file.<br></span><span
         style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 142.67px;"><img
           alt="" src="images/image16.png"
