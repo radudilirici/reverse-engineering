@@ -124,7 +124,7 @@ Based on our current knowledge, this is a summary of the encrypt_file function:
 
 3. The original file is opened in read mode (full_file_names[1] in the previous picture) and the temporary file is opened in write mode (full_file_names[0], having the &lt;filename>_temp name).
 4. A function named sub_40169A is called.
-5. The two files are closed. At this point the temporary file already has all the content inside it. Again, I observed this by placid breakpoints inside the debugger and checking the status of the files. From this we can deduce that sub_40169A handles the encryption of the file.
+5. The two files are closed. At this point the temporary file already has all the content inside it. Again, I observed this by placing breakpoints inside the debugger and checking the status of the files. From this we can deduce that sub_40169A handles the encryption of the file.
 6. The sub_4015F7 method is called.
 7. The method word_401842 is called. When opening this function inside IDA, we can’t actually read its contents. Instead, we can only see some random data. But, by analyzing it dynamically we can observe that after the call, the temporary file no longer exists and instead a new file with a cryptic name appears. For now I renamed it to secret_function.
 ![alt_text](images/image18.png "image_tooltip")
@@ -150,7 +150,7 @@ There are three for loops in this method, each writing some text inside the temp
 1. The position of the input stream is placed one byte before the end of the file. This is done so the next read operation results in getting the last byte.
 ![alt_text](images/image20.png "image_tooltip")
 
-2. The method goes through the original file byte by byte, backwards. For each read byte a random value is added to it. Then, this new byte is written to the temporary file.
+2. The method goes through the original file byte by byte, backwards. For each byte read a random value is added to it. Then, this new byte is written to the temporary file.
 ![alt_text](images/image21.png "image_tooltip")
 
 3. The string “fmi_re_couse” is written to the temporary file.
